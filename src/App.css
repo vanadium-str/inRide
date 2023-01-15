@@ -1,308 +1,306 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;700&display=swap");
 
-body{
-    font-family: 'IBM Plex Sans Hebrew', sans-serif;
-    font-size: 14px;
-    background-color: #F7F9FA;
+body {
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-size: 14px;
+  background-color: #f7f9fa;
 }
 
 a:link {
-    text-decoration: none;
-    padding: 0;
+  text-decoration: none;
+  padding: 0;
 }
 
-.pageTitle{
-    font-weight: 700;
-    font-size: 41px;
-    line-height: 34px;
-    text-align: right;
-    margin-bottom: 1rem;
+.pageTitle {
+  font-weight: 700;
+  font-size: 41px;
+  line-height: 34px;
+  text-align: right;
+  margin-bottom: 1rem;
 }
-.rtl{
-    direction: rtl;
-    display: ruby;
+.rtl {
+  direction: rtl;
+  display: ruby;
 }
-.mb-7{
-    margin-bottom: 7rem;
+.mb-7 {
+  margin-bottom: 7rem;
 }
-.backgroundElement{
-    background: #FFFFFF;    
-    box-shadow: 0px 0px 4px rgba(34, 34, 34, 0.02), 0px 0px 12px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
+.backgroundElement {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(34, 34, 34, 0.02),
+    0px 0px 12px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
 }
-.mediumBoldText{
-    font-weight: 700;
-    font-size: 18px;
+.mediumBoldText {
+  font-weight: 700;
+  font-size: 18px;
 }
-.smallText{
-    font-size: 12px;
+.smallText {
+  font-size: 12px;
 }
-.textLarge{
-    font-size: 18px;
+.textLarge {
+  font-size: 18px;
 }
-.colorGrey{
-    color: #858686;
+.colorGrey {
+  color: #858686;
 }
-.colorGreen{
-    color: #D2FF4D
+.colorGreen {
+  color: #d2ff4d;
 }
-.iconDone{
-    color: rgb(13, 157, 13);
-    font-size: 20px;
-    margin-right: 3px;
-    display: flex;
-    align-items: center;
-}
-
-.eventsSwitch{
-    position: sticky;
-    bottom: 0;
-    cursor: pointer;
-    font-size: 16px;
-    background-color: #F7F9FA;
-}
-.activeEventsSwitchButton{
-    background: radial-gradient(50% 50% at 50% 50%, #D2FF4D 0%, #F7F9FA 73.44%);
-    font-weight: bold;
-    min-height: 45px;
-}
-.mediumTitle{
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 34px;
-    text-align: right;
-}
-.fontSizeMedium{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-}
-.colorBlue{
-    color: #2581A6;
-}
-.tripDone{
-    color: #44A987;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-}
-.iconDoneBig{
-    font-size: 45px;
-}
-.button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 272px;
-    height: 48px;
-    background: #C1FB12;
-    border-radius: 16px;
-    border: #FFFFFF;
-}
-.buttonSmall{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 48px;
-    background: #C1FB12;
-    border-radius: 16px;
-    border: #FFFFFF;
-}
-.locationBlock{
-    background: #FFFFFF;
-    border-radius: 16px;
-    height: 40px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.chooseTopBlock{
-    background: #FFFFFF;
-    border-radius: 16px 16px 0px 0px;
-}
-.chooseBottomBlock{
-    background: #FFFFFF;
-    border-radius: 0px 0px 16px 16px;
-}
-.backgroundBlue{
-    background: #607AA1;
-    color: #FFFFFF;
-}
-.backgroundWhite{
-    background: #FFFFFF;
-}
-.invite{
-	position: absolute;
-	top: 33px;
-	left: 20px;
-	display: inline-block;
-	width: 15px;
-	height: 15px;
-    cursor: pointer;
-}
-.map{
-	position: absolute;
-	top: 33px;
-	left: 30px;
-	display: inline-block;
-	width: 15px;
-	height: 15px;
-    cursor: pointer;
+.iconDone {
+  color: rgb(13, 157, 13);
+  font-size: 20px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
 }
 
-.logo{
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 20px;
-    line-height: 9px;
-    letter-spacing: -0.105em;
-    color: black;
+.eventsSwitch {
+  position: sticky;
+  bottom: 0;
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #f7f9fa;
 }
-.inputSignIn{
-    background: #FFFFFF;
-    border-radius: 16px;
-    border: none;
-    direction: rtl;
-    padding: 14px 16px;
-    width: 304px;
-    height: 54px;
-    margin-top: 1rem;
+.activeEventsSwitchButton {
+  background: radial-gradient(50% 50% at 50% 50%, #d2ff4d 0%, #f7f9fa 73.44%);
+  font-weight: bold;
+  min-height: 45px;
 }
-.inputSmall{
-    width: 144px;
-    height: 54px;
+.mediumTitle {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 34px;
+  text-align: right;
 }
-.inputSize{
-    width: 304px;
-    height: 54px;
+.fontSizeMedium {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
-.heightInput{
-    min-height: 84px;
+.colorBlue {
+  color: #2581a6;
 }
-.socialMediaBlock{
-    background: #FFFFFF;
-    box-shadow: 0px 0px 4px rgba(34, 34, 34, 0.02), 0px 0px 12px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
-    height: 48px;
-    width: 96px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
-    margin-right: 5px;
+.tripDone {
+  color: #44a987;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
 }
-.cursor{
-    cursor: pointer;
+.iconDoneBig {
+  font-size: 45px;
 }
-.buttonBottom{
-    position: fixed;
-    bottom: 50px;
-    cursor: pointer;
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 272px;
+  height: 48px;
+  background: #c1fb12;
+  border-radius: 16px;
+  border: #ffffff;
 }
-.deleteButton{
-    right: 10px;
-    font-size: 24px;
-    bottom: 60px;
-    cursor: pointer;
+.buttonSmall {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 48px;
+  background: #c1fb12;
+  border-radius: 16px;
+  border: #ffffff;
 }
-.deleteButton:hover{
-    color: #F5665D;
+.locationBlock {
+  background: #ffffff;
+  border-radius: 16px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.inputWrong{
-    border: 1px solid #F5665D;
+.chooseTopBlock {
+  background: #ffffff;
+  border-radius: 16px 16px 0px 0px;
 }
-.inputMessage{
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    text-align: right;
-    color: #F5665D;
-    width: 304px;
-    display: flex;
-    justify-content: end;
+.chooseBottomBlock {
+  background: #ffffff;
+  border-radius: 0px 0px 16px 16px;
 }
-.inputMessageGreen{
-    color:#44A987;
+.backgroundBlue {
+  background: #607aa1;
+  color: #ffffff;
+}
+.backgroundWhite {
+  background: #ffffff;
+}
+.invite {
+  position: absolute;
+  top: 33px;
+  left: 20px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.map {
+  position: absolute;
+  top: 33px;
+  left: 30px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.logo {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 20px;
+  line-height: 9px;
+  letter-spacing: -0.105em;
+  color: black;
+}
+.inputSignIn {
+  background: #ffffff;
+  border-radius: 16px;
+  border: none;
+  direction: rtl;
+  padding: 14px 16px;
+  width: 304px;
+  height: 54px;
+  margin-top: 1rem;
+}
+.inputSmall {
+  width: 144px;
+  height: 54px;
+}
+.inputSize {
+  width: 304px;
+  height: 54px;
+}
+.heightInput {
+  min-height: 84px;
+}
+.socialMediaBlock {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(34, 34, 34, 0.02),
+    0px 0px 12px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  height: 48px;
+  width: 96px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.cursor {
+  cursor: pointer;
+}
+.buttonBottom {
+  position: fixed;
+  bottom: 50px;
+  cursor: pointer;
+}
+.deleteButton {
+  right: 10px;
+  font-size: 24px;
+  bottom: 60px;
+  cursor: pointer;
+}
+.deleteButton:hover {
+  color: #f5665d;
+}
+.inputWrong {
+  border: 1px solid #f5665d;
+}
+.inputMessage {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #f5665d;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .passwordView {
-	position: absolute;
-	top: 36px;
-	left: 20px;
-	display: inline-block;
-	width: 15px;
-	height: 15px;
-    cursor: pointer;
-	background: url(./assets/images/view.svg) 0 0 no-repeat;
+  position: absolute;
+  top: 36px;
+  left: 20px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  background: url(./assets/images/view.svg) 0 0 no-repeat;
 }
 .passwordView.view {
-	background: url(./assets/images/no-view.svg) 0 0 no-repeat;
+  background: url(./assets/images/no-view.svg) 0 0 no-repeat;
 }
-.ltr{
-    direction: ltr;
+.ltr {
+  direction: ltr;
 }
-.colorOrange{
-    color: #F59E3A;
+.colorOrange {
+  color: #f59e3a;
 }
-.colorRed{
-    color: #F5665D;
+.colorRed {
+  color: #f5665d;
 }
-.minHeight{
-    min-height: 94vH;
+.minHeight {
+  min-height: 94vh;
 }
-.bottom{
-    position: absolute;
-    bottom: 10px;
+.bottom {
+  position: absolute;
+  bottom: 10px;
 }
-.trackBlock{
-    background: #FFFFFF;
-    border-radius: 16px;
-    border: none;
-    padding: 14px 16px;
-    width: 304px;
-    height: 115px;
-    margin-top: 1rem;
+.trackBlock {
+  background: #ffffff;
+  border-radius: 16px;
+  border: none;
+  padding: 14px 16px;
+  width: 304px;
+  height: 115px;
+  margin-top: 1rem;
 }
-.emoji{
-    font-size: 41px;
+.emoji {
+  font-size: 41px;
 }
-.backgroundGrey{
-    background: #e4dfdf;
-    border-radius: 16px;
-    padding-left: 10px;
+.backgroundGrey {
+  background: #e4dfdf;
+  border-radius: 16px;
+  padding-left: 10px;
 }
 
-.modal{
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.5s;
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
 }
-.modal.active{
-    opacity: 1;
-    pointer-events: all;
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
 }
-.modalContent{
-    padding: 20px 5px;
-    background-color: #e2ebee;
-    height: 400px;
-    width: 400px;
-    transform: scale(0.5);
-    transition: 0.4s all;
+.modalContent {
+  padding: 20px 5px;
+  background-color: #e2ebee;
+  height: 400px;
+  width: 400px;
+  transform: scale(0.5);
+  transition: 0.4s all;
 }
-.modalContent.active{
-    transform: scale(1);
+.modalContent.active {
+  transform: scale(1);
 }

@@ -13,3 +13,5 @@ export const alreadyJoin = "alreadyJoin";
 export const errorPage = "error";
 export const personalArea = "personalArea";
 export const editPersonalData = "editPersonalData";
+
+export const URL = "https://www.snowsolutions.me/api/";

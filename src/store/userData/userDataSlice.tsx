@@ -6,9 +6,6 @@ const initialState: UserDataSliceState = {
   isAdmin: 1,
   email: "",
   phone: "",
-  pass: "",
-  passRepeat: "",
-  oldPass: "",
   userName: "",
   userData: "",
 };
@@ -29,15 +26,6 @@ export const userDataSlice = createSlice({
     setPhone: (state, action) => {
       state.phone = action.payload;
     },
-    setPass: (state, action) => {
-      state.pass = action.payload;
-    },
-    setPassRepeat: (state, action) => {
-      state.passRepeat = action.payload;
-    },
-    setOldPass: (state, action) => {
-      state.oldPass = action.payload;
-    },
     setUsername: (state, action) => {
       state.userName = action.payload;
     },
@@ -55,9 +43,6 @@ export const {
   setAdmin,
   setEmail,
   setPhone,
-  setPass,
-  setPassRepeat,
-  setOldPass,
   setUsername,
   setUserData,
   resetAll,

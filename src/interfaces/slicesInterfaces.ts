@@ -5,9 +5,6 @@ export interface UserDataSliceState {
   isAdmin: number;
   email: string;
   phone: string;
-  pass: string;
-  passRepeat: string;
-  oldPass: string;
   userName: string;
   userData: string;
 }
