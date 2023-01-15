@@ -44,6 +44,9 @@ export const userDataSlice = createSlice({
     setUserData: (state, action) => {
       state.userData = action.payload;
     },
+    resetAll: () => {
+      return initialState;
+    },
   },
 });
 
@@ -57,6 +60,7 @@ export const {
   setOldPass,
   setUsername,
   setUserData,
+  resetAll,
 } = userDataSlice.actions;
 
 export default userDataSlice.reducer;

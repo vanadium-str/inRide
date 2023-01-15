@@ -1,7 +1,7 @@
 import { EventData } from "./eventData";
 
 export interface UserDataSliceState {
-  userId: number;
+  userId: number | string;
   isAdmin: number;
   email: string;
   phone: string;
