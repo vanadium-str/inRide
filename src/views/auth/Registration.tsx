@@ -6,11 +6,12 @@ import { registrationSchema } from "../../validation/SignInValidation";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUserId } from "../../store/userData/userDataSlice";
-import { events } from "../../utils/constants";
+import { URL, events } from "../../utils/constants";
 import {
   RegistrationData,
   RegistrationFormElement,
 } from "../../interfaces/signInInterfaces";
+import { matchPhoneCodes } from "../../utils/functions";
 
 function Registration() {
   const dispatch = useDispatch();
@@ -36,6 +37,8 @@ function Registration() {
         if (result.password !== result.repeatPassword) {
           setIsNotValid("Both passwords must match");
           setWrongPass(true);
+        } else if (result.phone.toString().length !== 9 && !matchPhoneCodes(result.phone.toString().padStart(10, '0'))) {
+          setIsNotValid("Please enter a correct phone number");
         } else {
           setWrongPass(false);
           registration(result);
