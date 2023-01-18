@@ -16,7 +16,7 @@ function SignIn() {
 
   const handleSigningIn = (event: React.FormEvent<SignInFormElement>) => {
     event.preventDefault();
-    let formData = {
+    const formData = {
       phone: event.currentTarget.elements.phone.value,
       password: event.currentTarget.elements.password.value,
     };

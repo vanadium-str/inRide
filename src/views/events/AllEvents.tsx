@@ -13,7 +13,7 @@ function AllEvents() {
   const [uniqueDates, setUniqueDates] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const eventsList = useSelector(eventsListSelector);
-  let dates: string[] = [];
+  const dates: string[] = [];
 
   useEffect(() => {
     setLoading(true);
@@ -27,7 +27,7 @@ function AllEvents() {
           data.forEach((item: EventData) => {
             dateFormatting(dates, item);
           });
-          let datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
+          const datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
           setUniqueDates(datesFiltered);
         }
       });
@@ -49,7 +49,7 @@ function AllEvents() {
         {eventsList.length ? (
           uniqueDates.map((item, key) => {
             function filter(data: EventData) {
-              let dateFormat = new Date(data.time_start);
+              const dateFormat = new Date(data.time_start);
               if (
                 `${dateFormat.getDate()}/${dateFormat.getMonth()}/${dateFormat.getFullYear()}` ===
                 item
@@ -59,7 +59,7 @@ function AllEvents() {
                 return false;
               }
             }
-            let sortedEvents = eventsList.filter(filter);
+            const sortedEvents = eventsList.filter(filter);
             return (
               <div key={key}>
                 <div className="col-12 rtl mt-4 mb-1 px-2 d-flex justify-content-start">

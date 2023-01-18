@@ -9,7 +9,6 @@ interface HeaderAuthProps {
 
 function HeaderAuth({ name, back }: HeaderAuthProps) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const returnToSignIn = () => {
     navigate(`/`);

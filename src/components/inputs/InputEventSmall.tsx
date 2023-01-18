@@ -28,20 +28,20 @@ function InputEventSmall({ type, name, explanation, content, empty }: InputEvent
   let eventCurrent: EventData = eventDataInitialState;
 
   if (eventsList.length) {
-    let filteredEvent = eventsList.find((value) => value.event_id === currentEvent);
+    const filteredEvent = eventsList.find((value) => value.event_id === currentEvent);
     eventCurrent = filteredEvent ? filteredEvent : eventDataInitialState;
   }
 
   function setTime(event: string, start: boolean) {
     if (content === 'timeStartEdit' || content === 'timeEndEdit') {
-      let timeArray = event.split(':');
-      let newDate = new Date(eventCurrent.time_start);
+      const timeArray = event.split(':');
+      const newDate = new Date(eventCurrent.time_start);
       newDate.setHours(+timeArray[0]);
       newDate.setMinutes(+timeArray[1]);
       start ? dispatch(setDate(newDate)) : dispatch(setDateEnd(newDate));
     } else if (date) {
-      let timeArray = event.split(':');
-      let newDate = new Date(date);
+      const timeArray = event.split(':');
+      const newDate = new Date(date);
       newDate.setHours(+timeArray[0]);
       newDate.setMinutes(+timeArray[1]);
       start ? dispatch(setDate(newDate)) : dispatch(setDateEnd(newDate));

@@ -45,7 +45,7 @@ function AboutEvent() {
   const currentPage = useSelector(currentPageSelector);
   const currentEvent = useSelector(currentEventSelector);
 
-  let date: string[] = [];
+  const date: string[] = [];
   const vacancy = event.max_participants - event.booked;
   dateFormatting(date, event);
 
@@ -63,8 +63,8 @@ function AboutEvent() {
 
   const filter = (array: EventData[]) => {
     if (idEvent) {
-      let id = parseInt(idEvent);
-      let res = array.find((value) => value.event_id === id);
+      const id = parseInt(idEvent);
+      const res = array.find((value) => value.event_id === id);
       return res;
     }
   };

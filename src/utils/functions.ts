@@ -15,19 +15,19 @@ export function matchPhoneCodes(phone: string) {
 }
 
 export function dateFormatting(date: string[], item: EventData){   
-  let dateFormat = new Date(item.time_start);
+  const dateFormat = new Date(item.time_start);
   date.push(`${dateFormat.getDate()}/${dateFormat.getMonth()}/${dateFormat.getFullYear()}`)
 }
 
 export function dateTorender(date: string){
-  let array = date.split('/');
-  let dateFormat = new Date(+array[2], +array[1].toString(), +array[0]);
-  let day = week[dateFormat.getDay()];
+  const array = date.split('/');
+  const dateFormat = new Date(+array[2], +array[1].toString(), +array[0]);
+  const day = week[dateFormat.getDay()];
   return `${array[0]}/${+array[1] + 1} ${day}'`;
 }
 
 export function timeToRender(date: string){
-  let dateFormat = new Date(date);
+  const dateFormat = new Date(date);
   let minutes;
   if(dateFormat.getMinutes() < 10){
           minutes = '0' + dateFormat.getMinutes();
@@ -37,8 +37,8 @@ export function timeToRender(date: string){
   return `${dateFormat.getHours()}:${minutes}`;
 }
 
-let url = 'https://www.waze.com/ru/live-map/directions?to=ll.';
+const url = 'https://www.waze.com/ru/live-map/directions?to=ll.';
 export function createLink(coordinates: string){
-    let array = coordinates.split(', ');
+    const array = coordinates.split(', ');
     return url + array[0] + '%2C' + array[1];
 }

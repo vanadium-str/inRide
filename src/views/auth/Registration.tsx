@@ -23,7 +23,7 @@ function Registration() {
     event: React.FormEvent<RegistrationFormElement>
   ) => {
     event.preventDefault();
-    let formData = {
+    const formData = {
       email: event.currentTarget.elements.email.value,
       name: event.currentTarget.elements.name.value,
       phone: event.currentTarget.elements.phone.value,

@@ -16,7 +16,7 @@ function MyEvents() {
   const dispatch = useDispatch();
   const userId = useSelector(userIdSelector);
   const myEventsArray = useSelector(myEventsSelector);
-  let dates: string[] = [];
+  const dates: string[] = [];
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +38,7 @@ function MyEvents() {
           data.forEach((item: EventData) => {
             dateFormatting(dates, item);
           });
-          let datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
+          const datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
           setUniqueDates(datesFiltered);
         }
       });
@@ -60,7 +60,7 @@ function MyEvents() {
         {myEventsArray.length ? (
           uniqueDates.map((item, key) => {
             function filter(data: EventData) {
-              let dateFormat = new Date(data.time_start);
+              const dateFormat = new Date(data.time_start);
               if (
                 `${dateFormat.getDate()}/${dateFormat.getMonth()}/${dateFormat.getFullYear()}` ===
                 item
@@ -70,7 +70,7 @@ function MyEvents() {
                 return false;
               }
             }
-            let sortedEvents = myEventsArray.filter(filter);
+            const sortedEvents = myEventsArray.filter(filter);
             return (
               <div key={key}>
                 <div className="col-12 rtl mt-4 mb-1 px-2 d-flex justify-content-start">

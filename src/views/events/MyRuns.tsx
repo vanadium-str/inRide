@@ -15,7 +15,7 @@ function MyRuns() {
   const dispatch = useDispatch();
   const userId = useSelector(userIdSelector);
   const myRunsArray = useSelector(myRunsSelector);
-  let dates: string[] = [];
+  const dates: string[] = [];
 
   useEffect(() => {
     setLoading(true);
@@ -37,7 +37,7 @@ function MyRuns() {
           data.forEach((item: EventData) => {
             dateFormatting(dates, item);
           });
-          let datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
+          const datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
           setUniqueDates(datesFiltered);
         }
       });
@@ -59,7 +59,7 @@ function MyRuns() {
         {myRunsArray.length ? (
           uniqueDates.map((item, key) => {
             function filter(data: EventData) {
-              let dateFormat = new Date(data.time_start);
+              const dateFormat = new Date(data.time_start);
               if (
                 `${dateFormat.getDate()}/${dateFormat.getMonth()}/${dateFormat.getFullYear()}` ===
                 item
@@ -69,7 +69,7 @@ function MyRuns() {
                 return false;
               }
             }
-            let sortedEvents = myRunsArray.filter(filter);
+            const sortedEvents = myRunsArray.filter(filter);
 
             return (
               <div key={key}>
