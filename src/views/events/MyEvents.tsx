@@ -85,7 +85,7 @@ function MyEvents() {
         ) : (
           <div className="col-12 text-end">לא נמצאים הקפצות</div>
         )}
-        <ButtonEvents name={'+'} event={createEvent} />
+        {/* <ButtonEvents name={'+'} event={createEvent} /> */}
       </div>
     </div>
   );

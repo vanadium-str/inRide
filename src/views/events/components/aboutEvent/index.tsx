@@ -1,35 +1,111 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { TbCaravan, TbCheck, TbTrash } from 'react-icons/tb';
 import { useSelector } from 'react-redux';
-import { userAdminSelector } from '../../../../store/userData/userDataSelectors';
+import { userAdminSelector, userIdSelector } from '../../../../store/userData/userDataSelectors';
 import {
+  currentEventSelector,
   eventsListSelector,
   myEventsSelector,
   myRunsSelector,
 } from '../../../../store/eventsData/eventsDataSelectors';
 import { currentPageSelector } from '../../../../store/currentPage/currentPageSelectors';
-import { aboutEvent, events, myEvents, myRuns } from '../../../../utils/constants';
+import {
+  aboutEvent,
+  alreadyJoin,
+  errorPage,
+  events,
+  joinFailure,
+  joinSuccess,
+  myEvents,
+  myRuns,
+} from '../../../../utils/constants';
 import { EventData, eventDataInitialState } from '../../../../interfaces/eventData';
 import ButtonEvents from '../../../../components/buttons/ButtonEvents';
 import { dateFormatting, dateTorender, timeToRender } from '../../../../utils/functions';
 import HeaderEvents from '../../../../components/headers/HeaderEvents';
 import AboutEventBlock from './AboutEventBlock';
 import RidersList from './RidersList';
+import ModalDeleteEvent from '../../../../components/modalWindows/ModalDeleteEvent';
+import ModalUnsubscribe from '../../../../components/modalWindows/ModalUnsubscribe';
+import ModalEditEvent from '../../../../components/modalWindows/ModalEditEvent';
 
 function AboutEvent() {
   const [activeModalDeleteEvent, setActiveModalDeleteEvent] = useState(false);
+  const [activeModalEditEvent, setActiveModalEditEvent] = useState(false);
+  const [activeModalUnsubscribeEvent, setActiveModalUnsubscribeEvent] = useState(false);
   const [event, setEvent] = useState<EventData>(eventDataInitialState);
-  let { idEvent } = useParams();
+  const { idEvent } = useParams();
+  const navigate = useNavigate();
   const admin = useSelector(userAdminSelector);
+  const userId = useSelector(userIdSelector);
   const eventsList = useSelector(eventsListSelector);
   const myRunsList = useSelector(myRunsSelector);
   const myEventsList = useSelector(myEventsSelector);
   const currentPage = useSelector(currentPageSelector);
+  const currentEvent = useSelector(currentEventSelector);
 
   let date: string[] = [];
   const vacancy = event.max_participants - event.booked;
   dateFormatting(date, event);
+
+  useEffect(() => {
+    let filteredEvent: EventData | undefined;
+    if (currentPage === myEvents) {
+      filteredEvent = filter(myEventsList);
+    } else if (currentPage === myRuns) {
+      filteredEvent = filter(myRunsList);
+    } else if (currentPage === events) {
+      filteredEvent = filter(eventsList);
+    }
+    setEvent(filteredEvent ? filteredEvent : eventDataInitialState);
+  }, [currentPage]);
+
+  const filter = (array: EventData[]) => {
+    if (idEvent) {
+      let id = parseInt(idEvent);
+      let res = array.find((value) => value.event_id === id);
+      return res;
+    }
+  };
+
+  const joinEvent = () => {
+    fetch(URL + 'join_event', {
+      method: 'POST',
+      body: JSON.stringify({
+        event_id: currentEvent,
+        user_id: userId,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === 0) {
+          navigate(`/${joinSuccess}`);
+        } else if (data.status === 1) {
+          navigate(`/${joinFailure}`);
+        } else if (data.status === 2) {
+          navigate(`/${alreadyJoin}`);
+        } else if (data.status === 3) {
+          console.error('No such event');
+          navigate(`/${errorPage}`);
+        } else if (data.status === -1) {
+          console.error('Data Base Error');
+          navigate(`/${errorPage}`);
+        }
+      });
+  };
+
+  const handleModalEditEvent = () => {
+    setActiveModalEditEvent(true);
+  }
+
+  const handleModalUnsubscribeEvent = () => {
+    setActiveModalEditEvent(true);
+  }
 
   return event.levels ? (
     <div className="container pe-3 minHeight position-relative">
@@ -81,13 +157,13 @@ function AboutEvent() {
         )}
 
         {currentPage === events ? (
-          <ButtonEvents name={'הזמן'} event={'join'} />
+          <ButtonEvents name={'הזמן'} handleClick={joinEvent} />
         ) : currentPage === myRuns ? (
-          <ButtonEvents name={'בטל'} event={'unsubscribe'} />
+          <ButtonEvents name={'בטל'} handleClick={handleModalUnsubscribeEvent} />
         ) : (
           <div>
             <div>
-              <ButtonEvents name={'שינוי זמן'} event={'edit'} />
+              <ButtonEvents name={'שינוי זמן'} handleClick={handleModalEditEvent} />
             </div>
             <div
               className="buttonBottom deleteButton"
@@ -98,12 +174,14 @@ function AboutEvent() {
           </div>
         )}
 
-        {/* <ModalDeleteEvent
+        <ModalDeleteEvent
           active={activeModalDeleteEvent}
           setActive={setActiveModalDeleteEvent}
           event={event}
-          date={date}
-        /> */}
+          date={date[0]}
+        />
+        <ModalEditEvent active={activeModalEditEvent} setActive={setActiveModalEditEvent}/>
+        <ModalUnsubscribe active={activeModalUnsubscribeEvent} setActive={setActiveModalUnsubscribeEvent}/>
       </div>
     </div>
   ) : (

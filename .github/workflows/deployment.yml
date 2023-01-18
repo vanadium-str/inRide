@@ -1,0 +1,13 @@
+name: deployment
+on: [push, workflow_dispatch]
+jobs:
+  runs-on: ubuntu-latest
+  steps: 
+    - name: Get the repo code
+      uses: actions/checkout@v3
+    - name: Install deps
+      run: npm install
+    - name: Lint code
+      run: npm run lint
+    - name: Build App
+      run: npm run build
