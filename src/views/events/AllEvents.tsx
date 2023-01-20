@@ -65,8 +65,8 @@ function AllEvents() {
                 <div className="col-12 rtl mt-4 mb-1 px-2 d-flex justify-content-start">
                   {dateTorender(item)}
                 </div>
-                {sortedEvents.map((event, key) => {
-                  return <EventElement event={event} page={events} key={key} />;
+                {sortedEvents.map((event: EventData) => {
+                  return <EventElement event={event} page={events} key={event.event_id} />;
                 })}
               </div>
             );

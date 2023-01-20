@@ -76,7 +76,7 @@ function MyRuns() {
                 <div className="col-12 rtl mt-4 mb-1 px-2 d-flex justify-content-start">
                   {dateTorender(item)}
                 </div>
-                {sortedEvents.map((event) => {
+                {sortedEvents.map((event: EventData) => {
                   return <EventElement event={event} page={myRuns} key={event.event_id} />;
                 })}
               </div>

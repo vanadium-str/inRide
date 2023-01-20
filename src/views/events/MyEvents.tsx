@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createEvent, myEvents, URL } from '../../utils/constants';
+import { myEvents, URL } from '../../utils/constants';
 import { userIdSelector } from '../../store/userData/userDataSelectors';
 import { myEventsSelector } from '../../store/eventsData/eventsDataSelectors';
 import { setMyEvents } from '../../store/eventsData/eventsDataSlice';
@@ -41,7 +41,9 @@ function MyEvents() {
           data.forEach((item: EventData) => {
             dateFormatting(dates, item);
           });
-          const datesFiltered = dates.filter((value, index, array) => array.indexOf(value) === index);
+          const datesFiltered = dates.filter(
+            (value, index, array) => array.indexOf(value) === index
+          );
           setUniqueDates(datesFiltered);
         }
       });
@@ -50,7 +52,7 @@ function MyEvents() {
   const createEvent = () => {
     dispatch(setCurrentPage(myEvents));
     navigate(`/${createEvent}`);
-  }
+  };
 
   return (
     <div className="container py-3 minHeight position-relative">
@@ -84,7 +86,7 @@ function MyEvents() {
                 <div className="col-12 rtl mt-4 mb-1 px-2 d-flex justify-content-start">
                   {dateTorender(item)}
                 </div>
-                {sortedEvents.map((event) => {
+                {sortedEvents.map((event: EventData) => {
                   return <EventElement event={event} page={myEvents} key={event.event_id} />;
                 })}
               </div>
