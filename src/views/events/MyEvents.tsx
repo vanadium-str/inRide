@@ -9,11 +9,14 @@ import { dateFormatting, dateTorender } from '../../utils/functions';
 import HeaderEvents from '../../components/headers/HeaderEvents';
 import EventElement from './components/eventElement';
 import ButtonEvents from '../../components/buttons/ButtonEvents';
+import { setCurrentPage } from '../../store/currentPage/currentPageSlice';
+import { useNavigate } from 'react-router-dom';
 
 function MyEvents() {
   const [uniqueDates, setUniqueDates] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userId = useSelector(userIdSelector);
   const myEventsArray = useSelector(myEventsSelector);
   const dates: string[] = [];
@@ -43,6 +46,11 @@ function MyEvents() {
         }
       });
   }, []);
+
+  const createEvent = () => {
+    dispatch(setCurrentPage(myEvents));
+    navigate(`/${createEvent}`);
+  }
 
   return (
     <div className="container py-3 minHeight position-relative">
@@ -85,7 +93,7 @@ function MyEvents() {
         ) : (
           <div className="col-12 text-end">לא נמצאים הקפצות</div>
         )}
-        {/* <ButtonEvents name={'+'} event={createEvent} /> */}
+        <ButtonEvents name={'+'} handleClick={createEvent} />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { EventData } from "./eventData";
+import { UserData } from "./userData";
 
 export interface UserDataSliceState {
   userId: number | string;
@@ -6,7 +7,7 @@ export interface UserDataSliceState {
   email: string;
   phone: string;
   userName: string;
-  userData: string;
+  userData: UserData;
 }
 
 export interface CurrentPageSliceState {

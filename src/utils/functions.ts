@@ -42,3 +42,11 @@ export function createLink(coordinates: string){
     const array = coordinates.split(', ');
     return url + array[0] + '%2C' + array[1];
 }
+
+export function joinSuccessDate(date: string){
+  const dateFormat = new Date(date);
+  const time = timeToRender(date);
+  const day = `${week[dateFormat.getDay()]}'`;
+  const month = months[dateFormat.getMonth()];
+  return `${day} ${dateFormat.getDate()} ל${month} ${time}`
+}

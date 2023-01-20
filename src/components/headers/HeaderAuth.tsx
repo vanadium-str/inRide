@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/images/Back.svg";
-import { useDispatch } from "react-redux";
 
 interface HeaderAuthProps {
   name: string;

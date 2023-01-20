@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { UserDataSliceState } from "../../interfaces/slicesInterfaces";
+import { userDataInitialState } from "../../interfaces/userData";
 
 const initialState: UserDataSliceState = {
   userId: -1,
@@ -7,7 +8,7 @@ const initialState: UserDataSliceState = {
   email: "",
   phone: "",
   userName: "",
-  userData: "",
+  userData: userDataInitialState,
 };
 
 export const userDataSlice = createSlice({
