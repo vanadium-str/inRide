@@ -43,6 +43,6 @@ jobs:
       - name: Install dependecies
         run: npm ci
       - name: Build application
-        run: CI=false npm run build
+        run: CI="" npm run build
       - name: Deploy
         run: echo Deploying...
