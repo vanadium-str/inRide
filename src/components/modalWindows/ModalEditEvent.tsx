@@ -89,8 +89,8 @@ function ModalEditEvent({ active, setActive }: ModalEditEventProps) {
         onSubmit={handleEditEvent}
       >
         <div className="d-flex justify-content-center mb-3">:בחרו זמן חדש</div>
-        <div className="d-flex flex-row justify-content-between mb-5">
-          <InputEventSmall type={'time'} explanation={'זמן סיום'} id={'timeEndEdit'} />
+        <div className="d-flex mb-5">
+          <InputEventSmall type={'time'} explanation={'זמן סיום'} id={'timeEndEdit'} left={true} />
           <InputEventSmall type={'time'} explanation={'זמן התחלה'} id={'timeStartEdit'} />
         </div>
 

@@ -100,21 +100,28 @@ function CreateEvent() {
   return (
     <div className="container py-3 minHeight">
       <HeaderEvents name={'לפתוח הקפצה'} back={true} page={aboutEvent} />
-      <div className="row ms-1 mb-3">
-        <div className="col-6 colorBlue cursor" onClick={() => navigate(`/${createSpot}`)}>
-          להוסיף יעד
+      <div className="py-100">
+        <div className="row ms-1 mb-3">
+          <div className="col-6 colorBlue cursor" onClick={() => navigate(`/${createSpot}`)}>
+            להוסיף יעד
+          </div>
+          <div className="col-6 fw-bold row">
+            <div className="colorGrey fw-normal text-end col-6 col-lg-9">{spotsList.length}</div>
+            <div className="col-6 col-lg-3 text-end">יעדים</div>
+          </div>
         </div>
-        <div className="col-6 fw-bold row">
-          <div className="colorGrey fw-normal text-end col-6">{spotsList.length}</div>
-          <div className="col-6 text-end">יעדים</div>
+        <div className="row justify-content-center">
+          {spotsList.map((item, key) => {
+            return (
+              <Location
+                id={item.spot_id}
+                name={item.name}
+                coordinates={item.coordinates}
+                key={key}
+              />
+            );
+          })}
         </div>
-      </div>
-      <div className="row justify-content-center">
-        {spotsList.map((item, key) => {
-          return (
-            <Location id={item.spot_id} name={item.name} coordinates={item.coordinates} key={key} />
-          );
-        })}
       </div>
 
       <form onSubmit={handleCreateEvent}>
@@ -122,7 +129,7 @@ function CreateEvent() {
           <InputEvent type={'date'} id={'date'} name={'תאריך'} setDateSelected={setDateSelected} />
           {dateSelected ? (
             <div className="row g-0">
-              <InputEventSmall type={'time'} id={'timeEnd'} explanation={'זמן סיום'} />
+              <InputEventSmall type={'time'} id={'timeEnd'} explanation={'זמן סיום'} left={true} />
               <InputEventSmall type={'time'} id={'timeStart'} explanation={'זמן התחלה'} />
             </div>
           ) : (
@@ -133,12 +140,13 @@ function CreateEvent() {
           <InputEvent type={'number'} name={'₪ מחיר'} id={'price'} />
         </div>
         <div className="row justify-content-center mb-4">
-          <div className="col-11 text-end fw-bold">מקומות</div>
+          <div className="col-11 text-end fw-bold py-100">מקומות</div>
           <InputEventSmall
             type={'number'}
             name={'מקסימום'}
             explanation={'שנכנס להגלה'}
             id={'maxPlaces'}
+            left={true}
           />
           <InputEventSmall
             type={'number'}
@@ -150,11 +158,11 @@ function CreateEvent() {
         <Privacy />
         <div className="d-flex justify-content-center mt-5">
           {isNotValid !== '' ? (
-            <p className='inputMessage messageBottom fw-bold'>{isNotValid}</p>
+            <p className="inputMessage messageBottom fw-bold">{isNotValid}</p>
           ) : (
             <></>
           )}
-          <button className="button buttonBottom" disabled={!dateSelected} type='submit'>
+          <button className="button buttonBottom" disabled={!dateSelected} type="submit">
             הזמן
           </button>
         </div>

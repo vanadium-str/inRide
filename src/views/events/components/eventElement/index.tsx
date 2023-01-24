@@ -60,7 +60,7 @@ function EventElement({ event, page }: EventElementProps) {
           />
         </div>
         <div
-          className={`col-9 text-start ps-3 smallText ${
+          className={`col-9 col-lg-8 offset-lg-1 text-start ps-3 ps-sm-5 smallText ${
             event.is_private ? 'colorRed' : 'colorBlue mediumBoldText'
           }`}
         >

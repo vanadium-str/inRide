@@ -8,6 +8,7 @@ import {
   aboutEvent,
   alreadyJoin,
   createEvent,
+  createSpot,
   editPersonalData,
   errorPage,
   events,
@@ -31,6 +32,7 @@ import ErrorPage from './informationViews/ErrorPage';
 import PersonalData from './personalData';
 import EditPersonalData from './personalData/EditPersonalData';
 import CreateEvent from './events/components/createEvent';
+import CreateSpot from './events/components/createSpot';
 
 function Router() {
   const dispatch = useDispatch();
@@ -66,6 +68,7 @@ function Router() {
       />
       <Route path={`/${aboutEvent}/:idEvent`} element={<AboutEvent />} />
       <Route path={`/${createEvent}`} element={<CreateEvent />} />
+      <Route path={`/${createSpot}`} element={<CreateSpot />} />
       <Route path={`/${joinSuccess}`} element={<JoinSuccess />} />
       <Route path={`/${joinFailure}`} element={<JoinFailure />} />
       <Route path={`/${waitingList}`} element={<WaitingSuccess />} />

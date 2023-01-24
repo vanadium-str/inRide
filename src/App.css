@@ -355,3 +355,21 @@ a:link {
 .modalContent.active {
   transform: scale(1);
 }
+
+@media only screen and (min-width: 650px) {
+  .deleteButton {
+    right: 150px;
+  }
+
+  .py-100 {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .py-100 {
+    padding-left: 250px;
+    padding-right: 250px;
+  }
+}

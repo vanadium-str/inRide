@@ -142,8 +142,8 @@ function AboutEvent() {
 
         {event.min_participants <= event.booked ? (
           <div className="col-12 row tripDone mt-3">
-            <div className="col-10">אירוע יתקיים בוודעות. מספיק רוכבים נרשמו</div>
-            <div className="col-2 iconDoneBig">
+            <div className="col-10 col-md-11">אירוע יתקיים בוודעות. מספיק רוכבים נרשמו</div>
+            <div className="col-2 col-md-1 iconDoneBig">
               <TbCheck />
             </div>
           </div>
