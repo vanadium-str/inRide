@@ -22,7 +22,7 @@ function JoinSuccess() {
   const toEventsPage = () => {
     dispatch(setCurrentPage(myRuns));
     navigate(`/${events}`);
-}
+  };
 
   return (
     <div className="container pe-3 mt-2">

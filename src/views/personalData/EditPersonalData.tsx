@@ -37,8 +37,8 @@ function EditPersonalData() {
             changeData(result);
         }
       })
-      .catch(() => {
-        setIsNotValid("Password must be at least 6 characters");
+      .catch((error) => {
+        setIsNotValid(error.errors[0]);
       });
   };
 
@@ -91,7 +91,7 @@ function EditPersonalData() {
         </div>
       </div>
 
-      {isNotValid !== '' ? <p className={`inputMessage`}>{isNotValid}</p> : <></>}
+      {isNotValid !== '' ? <p className='inputMessage'>{isNotValid}</p> : <></>}
 
       <div className="d-flex justify-content-center mt-5">
         <button className="button buttonBottom">Save</button>

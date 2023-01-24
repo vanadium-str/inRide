@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import arrow from "../../assets/images/Back.svg";
+import { useNavigate } from 'react-router-dom';
+import arrow from '../../assets/images/Back.svg';
 
 interface HeaderAuthProps {
   name: string;
@@ -19,7 +19,7 @@ function HeaderAuth({ name, back }: HeaderAuthProps) {
         <span className="colorGreen fw-bold">in</span>Rideapp
       </div>
       <div className="col-6 text-end mediumTitle">
-        {name}{" "}
+        {name}{' '}
         {back ? (
           <img
             src={arrow}
@@ -29,7 +29,7 @@ function HeaderAuth({ name, back }: HeaderAuthProps) {
             }}
           />
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

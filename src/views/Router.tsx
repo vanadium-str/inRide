@@ -7,6 +7,7 @@ import SignIn from './auth/SignIn';
 import {
   aboutEvent,
   alreadyJoin,
+  createEvent,
   editPersonalData,
   errorPage,
   events,
@@ -29,6 +30,7 @@ import AlreadyJoin from './informationViews/AlreadyJoin';
 import ErrorPage from './informationViews/ErrorPage';
 import PersonalData from './personalData';
 import EditPersonalData from './personalData/EditPersonalData';
+import CreateEvent from './events/components/createEvent';
 
 function Router() {
   const dispatch = useDispatch();
@@ -44,8 +46,11 @@ function Router() {
     <Routes>
       <Route path={`/`} element={<SignIn />} />
       <Route path={`/${registration}`} element={<Registration />} />
-      <Route path={`/${personalArea}`} element={userId === -1 ? <SignIn/> : <PersonalData/>} />
-      <Route path={`/${editPersonalData}`} element={userId === -1 ? <SignIn/> : <EditPersonalData/>} />
+      <Route path={`/${personalArea}`} element={userId === -1 ? <SignIn /> : <PersonalData />} />
+      <Route
+        path={`/${editPersonalData}`}
+        element={userId === -1 ? <SignIn /> : <EditPersonalData />}
+      />
       <Route
         path={`/${events}`}
         element={
@@ -60,6 +65,7 @@ function Router() {
         }
       />
       <Route path={`/${aboutEvent}/:idEvent`} element={<AboutEvent />} />
+      <Route path={`/${createEvent}`} element={<CreateEvent />} />
       <Route path={`/${joinSuccess}`} element={<JoinSuccess />} />
       <Route path={`/${joinFailure}`} element={<JoinFailure />} />
       <Route path={`/${waitingList}`} element={<WaitingSuccess />} />

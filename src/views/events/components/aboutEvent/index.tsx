@@ -11,6 +11,7 @@ import {
 } from '../../../../store/eventsData/eventsDataSelectors';
 import { currentPageSelector } from '../../../../store/currentPage/currentPageSelectors';
 import {
+  URL,
   aboutEvent,
   alreadyJoin,
   errorPage,
@@ -104,7 +105,7 @@ function AboutEvent() {
   }
 
   const handleModalUnsubscribeEvent = () => {
-    setActiveModalEditEvent(true);
+    setActiveModalUnsubscribeEvent(true);
   }
 
   return event.levels ? (

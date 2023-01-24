@@ -1,5 +1,5 @@
-import { EventData } from "./eventData";
-import { UserData } from "./userData";
+import { EventData } from './eventData';
+import { UserData } from './userData';
 
 export interface UserDataSliceState {
   userId: number | string;
@@ -15,12 +15,7 @@ export interface CurrentPageSliceState {
 }
 
 export interface CreateEventDataSliceState {
-  date: string;
-  dateEnd: string;
   driver: string;
-  price: string;
-  minPlaces: number;
-  maxPlaces: number;
   privacy: number;
   spotId: number;
   trackLevel: number[];

@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { EventsDataSliceState } from "../../interfaces/slicesInterfaces";
+import { createSlice } from '@reduxjs/toolkit';
+import { EventsDataSliceState } from '../../interfaces/slicesInterfaces';
 
 const initialState: EventsDataSliceState = {
   eventsList: [],
@@ -10,7 +10,7 @@ const initialState: EventsDataSliceState = {
 };
 
 export const eventsDataSlice = createSlice({
-  name: "events",
+  name: 'events',
   initialState,
   reducers: {
     setEventsList: (state, action) => {
@@ -31,12 +31,7 @@ export const eventsDataSlice = createSlice({
   },
 });
 
-export const {
-  setEventsList,
-  setMyRuns,
-  setMyEvents,
-  setRidersList,
-  setCurrentEvent,
-} = eventsDataSlice.actions;
+export const { setEventsList, setMyRuns, setMyEvents, setRidersList, setCurrentEvent } =
+  eventsDataSlice.actions;
 
 export default eventsDataSlice.reducer;

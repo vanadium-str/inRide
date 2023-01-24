@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { UserDataSliceState } from "../../interfaces/slicesInterfaces";
-import { userDataInitialState } from "../../interfaces/userData";
+import { createSlice } from '@reduxjs/toolkit';
+import { UserDataSliceState } from '../../interfaces/slicesInterfaces';
+import { userDataInitialState } from '../../interfaces/userData';
 
 const initialState: UserDataSliceState = {
   userId: -1,
   isAdmin: 1,
-  email: "",
-  phone: "",
-  userName: "",
+  email: '',
+  phone: '',
+  userName: '',
   userData: userDataInitialState,
 };
 
 export const userDataSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     setUserId: (state, action) => {
@@ -39,14 +39,7 @@ export const userDataSlice = createSlice({
   },
 });
 
-export const {
-  setUserId,
-  setAdmin,
-  setEmail,
-  setPhone,
-  setUsername,
-  setUserData,
-  resetAll,
-} = userDataSlice.actions;
+export const { setUserId, setAdmin, setEmail, setPhone, setUsername, setUserData, resetAll } =
+  userDataSlice.actions;
 
 export default userDataSlice.reducer;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { myEvents, URL } from '../../utils/constants';
+import { createEvent, myEvents, URL } from '../../utils/constants';
 import { userIdSelector } from '../../store/userData/userDataSelectors';
 import { myEventsSelector } from '../../store/eventsData/eventsDataSelectors';
 import { setMyEvents } from '../../store/eventsData/eventsDataSlice';
@@ -49,7 +49,7 @@ function MyEvents() {
       });
   }, []);
 
-  const createEvent = () => {
+  const handleCreateEvent = () => {
     dispatch(setCurrentPage(myEvents));
     navigate(`/${createEvent}`);
   };
@@ -95,7 +95,7 @@ function MyEvents() {
         ) : (
           <div className="col-12 text-end">לא נמצאים הקפצות</div>
         )}
-        <ButtonEvents name={'+'} handleClick={createEvent} />
+        <ButtonEvents name={'+'} handleClick={handleCreateEvent} />
       </div>
     </div>
   );

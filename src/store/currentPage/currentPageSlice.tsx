@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { events } from "../../utils/constants";
-import { CurrentPageSliceState } from "../../interfaces/slicesInterfaces";
+import { createSlice } from '@reduxjs/toolkit';
+import { events } from '../../utils/constants';
+import { CurrentPageSliceState } from '../../interfaces/slicesInterfaces';
 
 const initialState: CurrentPageSliceState = {
   currentPage: events,
 };
 
 export const currentPageSlice = createSlice({
-  name: "page",
+  name: 'page',
   initialState,
   reducers: {
     setCurrentPage: (state, action) => {

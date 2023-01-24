@@ -1,4 +1,4 @@
-import { RootState } from "..";
+import { RootState } from '..';
 
 export const userIdSelector = (state: RootState) => state.user.userId;
 export const userAdminSelector = (state: RootState) => state.user.isAdmin;

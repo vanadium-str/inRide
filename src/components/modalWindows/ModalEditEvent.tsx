@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { errorPage, myEvents, URL } from '../../utils/constants';
+import { errorPage, events, myEvents, URL } from '../../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  dateEndSelector,
-  dateSelector,
-} from '../../store/createEventData/createEventDataSelectors';
-import { currentEventSelector } from '../../store/eventsData/eventsDataSelectors';
+  currentEventSelector,
+  eventsListSelector,
+} from '../../store/eventsData/eventsDataSelectors';
 import { setCurrentPage } from '../../store/currentPage/currentPageSlice';
 import InputEventSmall from '../inputs/InputEventSmall';
+import { EditEventFormElement } from '../../interfaces/editEventInterface';
+import { editEventSchema } from '../../validation/EditEventValidation';
+import { createDate } from '../../utils/functions';
+import { EventData, eventDataInitialState } from '../../interfaces/eventData';
 
 interface ModalEditEventProps {
   active: boolean;
@@ -16,19 +19,46 @@ interface ModalEditEventProps {
 }
 
 function ModalEditEvent({ active, setActive }: ModalEditEventProps) {
+  const [isNotValid, setIsNotValid] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const date = useSelector(dateSelector);
-  const dateEnd = useSelector(dateEndSelector);
   const currentEvent = useSelector(currentEventSelector);
+  const eventsList = useSelector(eventsListSelector);
+  let eventCurrent: EventData = eventDataInitialState;
 
-  const editTime = () => {
+  if (eventsList.length) {
+    const filteredEvent = eventsList.find((value) => value.event_id === currentEvent);
+    eventCurrent = filteredEvent ? filteredEvent : eventDataInitialState;
+  }
+
+  const handleEditEvent = (event: React.FormEvent<EditEventFormElement>) => {
+    event.preventDefault();
+    const formData = {
+      timeStartEdit: event.currentTarget.elements.timeStartEdit.value,
+      timeEndEdit: event.currentTarget.elements.timeEndEdit.value,
+    };
+
+    editEventSchema
+      .validate(formData)
+      .then((result) => {
+        setIsNotValid('');
+        editTime(
+          createDate(eventCurrent.time_start, result.timeStartEdit),
+          createDate(eventCurrent.time_start, result.timeEndEdit)
+        );
+      })
+      .catch((error) => {
+        setIsNotValid(error.errors[0]);
+      });
+  };
+
+  const editTime = (dateStart: Date, dateEnd: Date) => {
     fetch(URL + 'time_update', {
       method: 'PUT',
       body: JSON.stringify({
         event_id: currentEvent,
-        time_start: date,
+        time_start: dateStart,
         time_end: dateEnd,
       }),
       headers: {
@@ -40,7 +70,8 @@ function ModalEditEvent({ active, setActive }: ModalEditEventProps) {
         if (data.status === 0) {
           setActive(false);
           dispatch(setCurrentPage(myEvents));
-        } else if (data.status === 1) {
+          navigate(`/${events}`);
+        } else if (data.status === -1) {
           console.error('Data Base error');
           setActive(false);
           navigate(`/${errorPage}`);
@@ -50,19 +81,22 @@ function ModalEditEvent({ active, setActive }: ModalEditEventProps) {
 
   return (
     <div className={`modal ${active ? 'active' : ''}`} onClick={() => setActive(false)}>
-      <div
+      <form
         className={`modalContent ${
           active ? 'active' : ''
         } d-flex flex-column justify-content-center`}
         onClick={(e) => e.stopPropagation()}
+        onSubmit={handleEditEvent}
       >
         <div className="d-flex justify-content-center mb-3">:בחרו זמן חדש</div>
         <div className="d-flex flex-row justify-content-between mb-5">
-          <InputEventSmall type={'time'} explanation={'זמן סיום'} content={'timeEndEdit'} />
-          <InputEventSmall type={'time'} explanation={'זמן התחלה'} content={'timeStartEdit'} />
+          <InputEventSmall type={'time'} explanation={'זמן סיום'} id={'timeEndEdit'} />
+          <InputEventSmall type={'time'} explanation={'זמן התחלה'} id={'timeStartEdit'} />
         </div>
+
+        {isNotValid !== '' ? <p className="inputMessage">{isNotValid}</p> : <></>}
         <div className="d-flex flex-row justify-content-around">
-          <button className="buttonSmall" onClick={() => editTime()}>
+          <button className="buttonSmall" type="submit">
             שמור
           </button>
           <button
@@ -74,7 +108,7 @@ function ModalEditEvent({ active, setActive }: ModalEditEventProps) {
             חזור
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

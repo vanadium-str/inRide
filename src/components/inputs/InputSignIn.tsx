@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 interface InputSignInProps {
   placeholder: string;
@@ -13,18 +13,18 @@ function InputSignIn({ placeholder, type, id, wrong }: InputSignInProps) {
   return (
     <div className="col-12 d-flex align-items-center flex-column heightInput">
       <div className="inputSize position-relative">
-        {type === "password" ? (
+        {type === 'password' ? (
           <div
-            className={`passwordView ${showPass ? "view" : ""}`}
+            className={`passwordView ${showPass ? 'view' : ''}`}
             onClick={() => (showPass ? setShowPass(false) : setShowPass(true))}
           />
         ) : (
           <></>
         )}
         <input
-          className={`inputSignIn ${wrong ? "inputWrong" : ""}`}
+          className={`inputSignIn ${wrong ? 'inputWrong' : ''}`}
           placeholder={placeholder}
-          type={showPass ? "text" : type}
+          type={showPass ? 'text' : type}
           id={id}
         />
       </div>

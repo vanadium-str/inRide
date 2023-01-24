@@ -30,4 +30,4 @@ export const eventDataInitialState: EventData = {
   time_end: '',
   time_start: '',
   waiting: 0,
-}
+};
